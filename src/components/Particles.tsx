@@ -1,51 +1,52 @@
-"use client";
+'use client'
+
 import { useEffect, useState } from 'react'
 
 type Particle = {
-  id: number;
-  size: number;
-  left: number;
-  top: number;
-  duration: number;
-  delay: number;
-};
+  id: number
+  size: number
+  left: number
+  top: number
+  duration: number
+  delay: number
+}
 
 export default function Particles() {
-  const [particles, setParticles] = useState<Particle[]>([]); // ✅ FIXED
+  const [particles, setParticles] = useState<Particle[]>([])
 
   useEffect(() => {
-    const temp: Particle[] = [];
+    const temp: Particle[] = []
 
-    for (let i = 0; i < 30; i++) {
+    for (let i = 0; i < 50; i++) {
       temp.push({
         id: i,
-        size: Math.random() * 4 + 2,
+        size: Math.random() * 3 + 1,
         left: Math.random() * 100,
         top: Math.random() * 100,
-        duration: Math.random() * 5 + 5,
-        delay: Math.random() * 2,
-      });
+        duration: Math.random() * 10 + 5,
+        delay: Math.random() * 20,
+      })
     }
 
-    setParticles(temp);
-  }, []);
+    setParticles(temp)
+  }, [])
 
   return (
-    <div className="absolute inset-0 overflow-hidden z-0">
-      {particles.map(p => (
+    <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none">
+      {particles.map((p) => (
         <span
           key={p.id}
-          className="absolute rounded-full bg-cyan-400 opacity-30"
+          className="absolute rounded-full bg-cyan-400 opacity-30 animate-fall"
           style={{
-            width: p.size,
-            height: p.size,
+            width: `${p.size}px`,
+            height: `${p.size}px`,
             left: `${p.left}%`,
             top: `${p.top}%`,
-            animation: `float ${p.duration}s ease-in-out infinite`,
+            animationDuration: `${p.duration}s`,
             animationDelay: `${p.delay}s`,
           }}
         />
       ))}
     </div>
-  );
+  )
 }

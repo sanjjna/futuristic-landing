@@ -97,3 +97,6 @@ body {
     opacity: 0;
   }
 }
+  .animate-fall {
+    animation: fall linear infinite;
+  }
