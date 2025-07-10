@@ -40,7 +40,9 @@ export default function Testimonials() {
             transition={{ duration: 0.6, delay: index * 0.2 }}
             viewport={{ once: true }}
           >
-            <p className="mb-4 text-sm font-light">"{t.quote}"</p>
+            
+            <p className="mb-4 text-sm font-light">&quot;{t.quote}&quot;</p>
+
             <span className="text-xs font-bold uppercase tracking-wide">
               — {t.name}
             </span>
